@@ -30,6 +30,86 @@
         .img-box{
             width:100%;
             heigth:2000px;
+            background: url('background.png');
+            top: 0;
+            left: 0;
+            margin: 0 0 0 0;
+        }
+        body{
+            margin:10px 200px 10px 200px;
+            background-image: url("background.png");
+            background-size: 100% 200px;
+            background-repeat: no-repeat;
+        }
+    </style>
+</head>
+<body>
+        <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+<!--           <img id="lab_logo" src="logo.png"/> -->
+          <div>
+              <div style="width: 100%" class="img-box">
+                <h1 id="project_title" style="color:white" font face="Times New Roman">Voice Conversion Model Based on Feature Fusion and Multi-level Speaker Feature Guidance Decoding</h1>
+              </div>
+          </div>
+        </header>
+    </div>
+    <h1 id="abstract" font face="Times New Roman">Abstract</h1>
+    <h4 font face="Times New Roman" style="line-height: 2em;">
+        First, by constructing a feature fusion module based on multi-channel correlation to fully fuse content feature and speaker feature, 
+      while ensures the linear relationship between the fused feature and content feature. Second, by constructing a decoder with multi-level 
+      speaker information guidance to enhance the similarity of converted speech and reduce the burden of the decoder. Finally, in order to 
+      enhance the generalization ability of the model, the Barlow Twins loss function is introduced to enable the speaker encoder to learn global 
+      and robust speaker feature in an unsupervised manner. The experimental results on the VCTK dataset show that compared with TriAAN-VC, the word 
+      error rate of the model decreases by 53.45%, and the naturalness of converted speech improves by 12.70%. Furthermore, the model achieved 
+      comparable performance on inter-dataset (LibriTTS) as on the intra-dataset (VCTK), indicating that the model has strong generalization ability.
+    </h4>
+    <h2>One-shot VC performance</h2>
+    <h4>
+        Our proposed model uses the same training setup as TriAAN-VC[1], while BetaVAE-VC[2] use open-source pre-trained models.EVQMIVC is our previous work(https://2901733926.github.io/).
+    <h4>
+    <table>
+        <tr>
+            <th></th>
+            <th>Gender</th>
+            <th>Source Audio</th>
+            <th>Target Audio</th>
+            <th>Model</th>
+            <th>Converted Audio</th>
+        </tr>
+         <!DOCTYPE html>
+<html>
+<head>
+    <title>音频展示</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: center;
+            white-space: nowrap;
+        }
+        th {
+            background-color: #6699ff;
+        }
+        .sub-row {
+            border-top: none;
+        }
+         .audio-name {
+            position: absolute;
+            top: -30px;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            font-weight: bold;
+        }
+        .img-box{
+            width:100%;
+            heigth:2000px;
             background: url('images/background.png');
             top: 0;
             left: 0;
@@ -72,11 +152,11 @@
     <table>
         <tr>
             <th></th>
-            <th>Gender</th>
             <th>Source Audio</th>
             <th>Target Audio</th>
             <th>Model</th>
             <th>Converted Audio</th>
+            <th>Gender</th>
         </tr>
           <tr>
             <td rowspan="16">VCTK</td>
@@ -226,7 +306,7 @@
              </td>
          </tr>
          <tr>
-            <td rowspan="8">Male-Male</td>
+            <td rowspan="4">Male-Male</td>
             <td rowspan="4">
                 <audio controls>
                     <source src="VCTK/source/p274_088.wav" type="audio/mpeg">
@@ -238,7 +318,7 @@
             </td>
             <td rowspan="4">
                 <audio controls>
-                    <source src="VCTK/target/p347_073.wav" type="audio/mpeg">
+                    <source src="audios/target/p347_073.wav" type="audio/mpeg">
                 </audio>
                 <br>
                 p347_073.wav
@@ -274,21 +354,213 @@
                 </audio>
              </td>
         </tr>
+        <tr>
+            <td rowspan="16">LibriTTS</td>
+            <td rowspan="4">Female-Male</td>
+            <td rowspan="4">
+                <audio controls>
+                    <source src="LibriSpeech/source/1054_143005_000083_000004.wav" type="audio/mpeg">
+                </audio>
+                <br>
+                1054_143005_000083_000004.wav
+                <br>
+                He no longer saw it, but he could hear it as it squeezed its way behind the books on one of the shelves. 
+            </td>
+               <td rowspan="4">
+                <audio controls>
+                    <source src="LibriSpeech/target/101_126860_000042_000000.wav" type="audio/mpeg">
+                </audio>
+                <br>
+                101_126860_000042_000000.wav
+            </td>
+            <td> BetaVAE-VC </td>
+            <td>
+                <audio controls>
+                <source src="LibriSpeech/BetaVAE-VC/test-1054_143005_000083_000004_to_101_126860_000042_000000-500.wav" type="audio/mpeg">
+                </audio>
+            </td>
+        </tr>
+        <tr>
+            <td> EVQMIVC </td>
+            <td>
+                <audio controls>
+                <source src="LibriSpeech/EVQMIVC/1054_143005_000083_000004_101_126860_000042_000000_gen.wav" type="audio/mpeg">
+                </audio>
+             </td>
+         </tr>
+         <tr>
+             <td> TriAAN-VC </td>
+             <td>
+                <audio controls>
+                <source src="LibriSpeech/TriAAN-VC/1054_143005_000083_000004_101_126860_000042_000000_gen.wav" type="audio/mpeg">
+                </audio>
+              </td>
+         </tr>
+         <tr>
+             <td> Proposed </td>
+             <td>
+                <audio controls>
+                <source src="LibriSpeech/Proposed/1054_143005_000083_000004_to_101_126860_000042_000000.wav" type="audio/mpeg">
+                </audio>
+             </td>
+        </tr>
+        <tr>
+            <td rowspan="4">Female-Female</td>
+             <td rowspan="4">
+                <audio controls>
+                    <source src="LibriSpeech/source/1053_132821_000020_000004.wav" type="audio/mpeg">
+                </audio>
+                <br>
+                 1053_132821_000020_000004.wav
+                <br>
+                But at length, breathless and exhausted, he reached her side, and gasped out:
+             </td>
+              <td rowspan="4">
+                <audio controls>
+                    <source src="LibriSpeech/target/100_122655_000038_000000.wav" type="audio/mpeg">
+                </audio>
+                <br>
+                100_122655_000038_000000.wav
+             </td>
+            <td> BetaVAE-VC </td>
+             <td>
+                 <audio controls>
+                   <source src="LibriSpeech/BetaVAE-VC/test-1053_132821_000020_000004_to_100_122655_000038_000000-500.wav" type="audio/mpeg">
+               </audio>
+             </td>
+        </tr>
+        <tr>
+             <td> EVQMIVC </td>
+             <td>
+                <audio controls>
+                    <source src="LibriSpeech/EVQMIVC/1053_132821_000020_000004_100_122655_000038_000000_gen.wav" type="audio/mpeg">
+                </audio>
+             </td>
+        </tr>
+        <tr>
+             <td> TriAAN-VC </td>
+             <td>
+                <audio controls>
+                    <source src="LibriSpeech/TriAAN-VC/1053_132821_000020_000004_100_122655_000038_000000_gen.wav" type="audio/mpeg">
+                </audio>
+             </td>
+        </tr>
+        <tr>
+             <td> Proposed </td>
+             <td>
+                <audio controls>
+                    <source src="LibriSpeech/Proposed/1053_132821_000020_000004_to_100_122655_000038_000000.wav" type="audio/mpeg">
+                </audio>
+             </td>
+        </tr>
+            <td rowspan="4">Male-Female</td>
+            <td rowspan="4">
+                <audio controls>
+                    <source src="LibriSpeech/source/1121_132777_000003_000000.wav" type="audio/mpeg">
+                </audio>
+                <br>
+                1121_132777_000003_000000.wav
+                <br>
+                his paper was signed in cipher by the seven chiefs of the conspiracy, 
+                Shrewsbury, Devonshire, Danby, Lumley, Compton, Russell and Sidney. Herbert undertook to be their messenger.
+            </td>
+               <td rowspan="4">
+                <audio controls>
+                    <source src="LibriSpeech/target/1052_139308_000057_000000.wav" type="audio/mpeg">
+                </audio>
+                <br>
+                1052_139308_000057_000000.wav
+            </td>
+            <td> BetaVAE-VC </td>
+            <td>
+                <audio controls>
+                <source src="LibriSpeech/BetaVAE-VC/test-1121_132777_000003_000000_to_1052_139308_000057_000000-500.wav" type="audio/mpeg">
+                </audio>
+             </td>
+         </tr>
+         <tr>
+             <td> EVQMIVC </td>
+             <td>
+                <audio controls>
+                <source src="LibriSpeech/EVQMIVC/1121_132777_000003_000000_1052_139308_000057_000000_gen.wav" type="audio/mpeg">
+                </audio>
+             </td>
+         </tr>
+         <tr>
+             <td> TriAAN-VC </td>
+             <td>
+                <audio controls>
+                <source src="LibriSpeech/TriAAN-VC/1121_132777_000003_000000_1052_139308_000057_000000_gen.wav" type="audio/mpeg">
+                </audio>
+              </td>
+         </tr>
+         <tr>
+             <td> Proposed </td>
+             <td>
+                <audio controls>
+                <source src="LibriSpeech/Proposed/1121_132777_000003_000000_to_1052_139308_000057_000000.wav" type="audio/mpeg">
+                </audio>
+             </td>
+         </tr>
+         <tr>
+            <td rowspan="4">Male-Male</td>
+            <td rowspan="4">
+                <audio controls>
+                    <source src="LibriSpeech/source/1112_1043_000014_000002.wav" type="audio/mpeg">
+                </audio>
+                <br>
+                1112_1043_000014_000002.wav
+                <br>
+                What have you locked in the laundry?
+            </td>
+            <td rowspan="4">
+                <audio controls>
+                    <source src="LibriSpeech/target/1027_125147_000126_000000.wav" type="audio/mpeg">
+                </audio>
+                <br>
+                1027_125147_000126_000000.wav
+            </td>
+            <td> BetaVAE-VC </td>
+            <td>
+                <audio controls>
+                <source src="LibriSpeech/BetaVAE-VC/test-1112_1043_000014_000002_to_1027_125147_000126_000000-500.wav" type="audio/mpeg">
+                </audio>
+            </td>
+        </tr>
+        <tr>
+            <td> EVQMIVC </td>
+            <td>
+                <audio controls>
+                <source src="LibriSpeech/EVQMIVC/1112_1043_000014_000002_1027_125147_000126_000000_gen.wav" type="audio/mpeg">
+                </audio>
+             </td>
+         </tr>
+         <tr>
+             <td> TriAAN-VC </td>
+             <td>
+                <audio controls>
+                <source src="LibriSpeech/TriAAN-VC/1112_1043_000014_000002_1027_125147_000126_000000_gen.wav" type="audio/mpeg">
+                </audio>
+              </td>
+         </tr>
+         <tr>
+             <td> Proposed </td>
+             <td>
+                <audio controls>
+                <source src="LibriSpeech/Proposed/1112_1043_000014_000002_to_1027_125147_000126_000000.wav" type="audio/mpeg">
+                </audio>
+             </td>
+        </tr>
     </table>
     <h2>Reference</h2>
     <br>
-        <a href="https://arxiv.org/pdf/2106.10132.pdf">[1] VQMIVC: Vector Quantization and Mutual Information-Based Unsupervised
-        Speech Representation Disentanglement for One-shot Voice Conversion</a>
+        <a href="https://arxiv.org/pdf/2303.09057">[1] TRIAAN-VC: TRIPLE ADAPTIVE ATTENTION NORMALIZATION
+        FOR ANY-TO-ANY VOICE CONVERSION</a>
     <br>
-        <a href="https://arxiv.org/pdf/2208.08757.pdf">[2] Speech Representation Disentanglement with Adversarial Mutual Information
-        Learning for One-shot Voice Conversion</a>
-    <br>
-        <a href="https://arxiv.org/pdf/2011.00316.pdf">[3] AGAIN-VC: A ONE-SHOT VOICE CONVERSION USING
-        ACTIVATION GUIDANCE AND ADAPTIVE INSTANCE NORMALIZATION</a>
+        <a href="https://arxiv.org/pdf/2210.13771v1">[2] DISENTANGLED SPEECH REPRESENTATION LEARNING FOR
+        ONE-SHOT CROSS-LINGUAL VOICE CONVERSION USING β-VAE</a>
     <h2>Pretrained Model</h2>
     <br>
-        <a href="https://github.com/YoungSeng/SRD-VC/tree/master">SRDVC pretrained models</a>
-    <br>
-        <a href="https://github.com/KimythAnly/AGAIN-VC">AGAIN-VC pretrained models</a>
+        <a href="https://github.com/light1726/BetaVAE_VC">BetaVAE-VC pretrained models</a>
 </body>
 </html>
