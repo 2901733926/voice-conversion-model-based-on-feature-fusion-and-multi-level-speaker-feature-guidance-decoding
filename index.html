@@ -1,1 +1,294 @@
-
+<!DOCTYPE html>
+<html>
+<head>
+    <title>音频展示</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: center;
+            white-space: nowrap;
+        }
+        th {
+            background-color: #6699ff;
+        }
+        .sub-row {
+            border-top: none;
+        }
+         .audio-name {
+            position: absolute;
+            top: -30px;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            font-weight: bold;
+        }
+        .img-box{
+            width:100%;
+            heigth:2000px;
+            background: url('images/background.png');
+            top: 0;
+            left: 0;
+            margin: 0 0 0 0;
+        }
+        body{
+            margin:10px 200px 10px 200px;
+            background-image: url("images/background.png");
+            background-size: 100% 200px;
+            background-repeat: no-repeat;
+        }
+    </style>
+</head>
+<body>
+        <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+<!--           <img id="lab_logo" src="images/logo.png"/> -->
+          <div>
+              <div style="width: 100%" class="img-box">
+                <h1 id="project_title" style="color:white" font face="Times New Roman">Voice Conversion Model Based on Feature Fusion and Multi-level Speaker Feature Guidance Decoding</h1>
+              </div>
+          </div>
+        </header>
+    </div>
+    <h1 id="abstract" font face="Times New Roman">Abstract</h1>
+    <h4 font face="Times New Roman" style="line-height: 2em;">
+        First, by constructing a feature fusion module based on multi-channel correlation to fully fuse content feature and speaker feature, 
+      while ensures the linear relationship between the fused feature and content feature. Second, by constructing a decoder with multi-level 
+      speaker information guidance to enhance the similarity of converted speech and reduce the burden of the decoder. Finally, in order to 
+      enhance the generalization ability of the model, the Barlow Twins loss function is introduced to enable the speaker encoder to learn global 
+      and robust speaker feature in an unsupervised manner. The experimental results on the VCTK dataset show that compared with TriAAN-VC, the word 
+      error rate of the model decreases by 53.45%, and the naturalness of converted speech improves by 12.70%. Furthermore, the model achieved 
+      comparable performance on inter-dataset (LibriTTS) as on the intra-dataset (VCTK), indicating that the model has strong generalization ability.
+    </h4>
+    <h2>One-shot VC performance</h2>
+    <h4>
+        Our proposed model uses the same training setup as TriAAN-VC[1], while BetaVAE-VC[2] use open-source pre-trained models.EVQMIVC is our previous work(https://2901733926.github.io/).
+    <h4>
+    <table>
+        <tr>
+            <th></th>
+            <th>Source Audio</th>
+            <th>Target Audio</th>
+            <th>Model</th>
+            <th>Converted Audio</th>
+            <th>Gender</th>
+        </tr>
+          <tr>
+            <td rowspan="16">VCTK</td>
+            <td rowspan="4">Female-Male</td>
+            <td rowspan="4">
+                <audio controls>
+                    <source src="VCTK/source/p257_416.wav" type="audio/mpeg">
+                </audio>
+                <br>
+                p257_416.wav
+                <br>
+                Rather than answer, she resigned. 
+            </td>
+               <td rowspan="4">
+                <audio controls>
+                    <source src="VCTK/target/p302_307.wav" type="audio/mpeg">
+                </audio>
+                <br>
+                p302_307.wav
+            </td>
+            <td> BetaVAE-VC </td>
+            <td>
+                <audio controls>
+                <source src="VCTK/BetaVAE-VC/test-p257_416_to_p302_307-500.wav" type="audio/mpeg">
+                </audio>
+            </td>
+        </tr>
+        <tr>
+            <td> EVQMIVC </td>
+            <td>
+                <audio controls>
+                <source src="VCTK/EVQMIVC/p257_416_p302_307_gen.wav" type="audio/mpeg">
+                </audio>
+             </td>
+         </tr>
+         <tr>
+             <td> TriAAN-VC </td>
+             <td>
+                <audio controls>
+                <source src="VCTK/TriAAN-VC/p257_416_p302_307_gen.wav" type="audio/mpeg">
+                </audio>
+              </td>
+         </tr>
+         <tr>
+             <td> Proposed </td>
+             <td>
+                <audio controls>
+                <source src="VCTK/Proposed/p257_416_mic1_to_p302_307_mic1.wav" type="audio/mpeg">
+                </audio>
+             </td>
+        </tr>
+        <tr>
+            <td rowspan="4">Female-Female</td>
+             <td rowspan="4">
+                <audio controls>
+                    <source src="VCTK/source/p295_249.wav" type="audio/mpeg">
+                </audio>
+                <br>
+                 p295_249.wav
+                <br>
+                Here, the fans have been fantastic.
+             </td>
+              <td rowspan="4">
+                <audio controls>
+                    <source src="VCTK/target/p310_059.wav" type="audio/mpeg">
+                </audio>
+                <br>
+                p310_059.wav
+             </td>
+            <td> BetaVAE-VC </td>
+             <td>
+                 <audio controls>
+                   <source src="VCTK/BetaVAE-VC/test-p295_249_to_p310_059-500.wav" type="audio/mpeg">
+               </audio>
+             </td>
+        </tr>
+        <tr>
+             <td> EVQMIVC </td>
+             <td>
+                <audio controls>
+                    <source src="VCTK/EVQMIVC/p295_249_p310_059_gen.wav" type="audio/mpeg">
+                </audio>
+             </td>
+        </tr>
+        <tr>
+             <td> TriAAN-VC </td>
+             <td>
+                <audio controls>
+                    <source src="VCTK/TriAAN-VC/p295_249_p310_059_gen.wav" type="audio/mpeg">
+                </audio>
+             </td>
+        </tr>
+        <tr>
+             <td> Proposed </td>
+             <td>
+                <audio controls>
+                    <source src="VCTK/Proposed/p295_249_mic1_to_p310_059_mic1.wav" type="audio/mpeg">
+                </audio>
+             </td>
+        </tr>
+            <td rowspan="4">Male-Female</td>
+            <td rowspan="4">
+                <audio controls>
+                    <source src="VCTK/source/p255_054.wav" type="audio/mpeg">
+                </audio>
+                <br>
+                p255_054.wav
+                <br>
+                That's the truth.
+            </td>
+               <td rowspan="4">
+                <audio controls>
+                    <source src="VCTK/target/p295_359.wav" type="audio/mpeg">
+                </audio>
+                <br>
+                p295_359.wav
+            </td>
+            <td> BetaVAE-VC </td>
+            <td>
+                <audio controls>
+                <source src="VCTK/BetaVAE-VC/test-p255_054_to_p295_359-500.wav" type="audio/mpeg">
+                </audio>
+             </td>
+         </tr>
+         <tr>
+             <td> EVQMIVC </td>
+             <td>
+                <audio controls>
+                <source src="VCTK/EVQMIVC/p255_054_p295_359_gen.wav" type="audio/mpeg">
+                </audio>
+             </td>
+         </tr>
+         <tr>
+             <td> TriAAN-VC </td>
+             <td>
+                <audio controls>
+                <source src="VCTK/TriAAN-VC/p255_054_p295_359_gen.wav" type="audio/mpeg">
+                </audio>
+              </td>
+         </tr>
+         <tr>
+             <td> Proposed </td>
+             <td>
+                <audio controls>
+                <source src="VCTK/Proposed/p255_054_mic1_to_p295_359_mic1.wav" type="audio/mpeg">
+                </audio>
+             </td>
+         </tr>
+         <tr>
+            <td rowspan="8">Male-Male</td>
+            <td rowspan="4">
+                <audio controls>
+                    <source src="VCTK/source/p274_088.wav" type="audio/mpeg">
+                </audio>
+                <br>
+                p274_088.wav
+                <br>
+                The commission initiated the necessary changes in the financial regulation.
+            </td>
+            <td rowspan="4">
+                <audio controls>
+                    <source src="audios/target/p347_073.wav" type="audio/mpeg">
+                </audio>
+                <br>
+                p347_073.wav
+            </td>
+            <td> BetaVAE-VC </td>
+            <td>
+                <audio controls>
+                <source src="VCTK/BetaVAE-VC/test-p274_088_to_p347_073-500.wav" type="audio/mpeg">
+                </audio>
+            </td>
+        </tr>
+        <tr>
+            <td> EVQMIVC </td>
+            <td>
+                <audio controls>
+                <source src="VCTK/EVQMIVC/p274_088_p347_073_gen.wav" type="audio/mpeg">
+                </audio>
+             </td>
+         </tr>
+         <tr>
+             <td> TriAAN-VC </td>
+             <td>
+                <audio controls>
+                <source src="VCTK/TriAAN-VC/p274_088_p347_073_gen.wav" type="audio/mpeg">
+                </audio>
+              </td>
+         </tr>
+         <tr>
+             <td> Proposed </td>
+             <td>
+                <audio controls>
+                <source src="VCTK/Proposed/p274_088_mic1_to_p347_073_mic1.wav" type="audio/mpeg">
+                </audio>
+             </td>
+        </tr>
+    </table>
+    <h2>Reference</h2>
+    <br>
+        <a href="https://arxiv.org/pdf/2106.10132.pdf">[1] VQMIVC: Vector Quantization and Mutual Information-Based Unsupervised
+        Speech Representation Disentanglement for One-shot Voice Conversion</a>
+    <br>
+        <a href="https://arxiv.org/pdf/2208.08757.pdf">[2] Speech Representation Disentanglement with Adversarial Mutual Information
+        Learning for One-shot Voice Conversion</a>
+    <br>
+        <a href="https://arxiv.org/pdf/2011.00316.pdf">[3] AGAIN-VC: A ONE-SHOT VOICE CONVERSION USING
+        ACTIVATION GUIDANCE AND ADAPTIVE INSTANCE NORMALIZATION</a>
+    <h2>Pretrained Model</h2>
+    <br>
+        <a href="https://github.com/YoungSeng/SRD-VC/tree/master">SRDVC pretrained models</a>
+    <br>
+        <a href="https://github.com/KimythAnly/AGAIN-VC">AGAIN-VC pretrained models</a>
+</body>
+</html>
