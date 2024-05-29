@@ -72,86 +72,6 @@
     <table>
         <tr>
             <th></th>
-            <th>Gender</th>
-            <th>Source Audio</th>
-            <th>Target Audio</th>
-            <th>Model</th>
-            <th>Converted Audio</th>
-        </tr>
-         <!DOCTYPE html>
-<html>
-<head>
-    <title>音频展示</title>
-    <style>
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-        th, td {
-            border: 1px solid black;
-            padding: 8px;
-            text-align: center;
-            white-space: nowrap;
-        }
-        th {
-            background-color: #6699ff;
-        }
-        .sub-row {
-            border-top: none;
-        }
-         .audio-name {
-            position: absolute;
-            top: -30px;
-            left: 0;
-            width: 100%;
-            text-align: center;
-            font-weight: bold;
-        }
-        .img-box{
-            width:100%;
-            heigth:2000px;
-            background: url('images/background.png');
-            top: 0;
-            left: 0;
-            margin: 0 0 0 0;
-        }
-        body{
-            margin:10px 200px 10px 200px;
-            background-image: url("images/background.png");
-            background-size: 100% 200px;
-            background-repeat: no-repeat;
-        }
-    </style>
-</head>
-<body>
-        <!-- HEADER -->
-    <div id="header_wrap" class="outer">
-        <header class="inner">
-<!--           <img id="lab_logo" src="images/logo.png"/> -->
-          <div>
-              <div style="width: 100%" class="img-box">
-                <h1 id="project_title" style="color:white" font face="Times New Roman">Voice Conversion Model Based on Feature Fusion and Multi-level Speaker Feature Guidance Decoding</h1>
-              </div>
-          </div>
-        </header>
-    </div>
-    <h1 id="abstract" font face="Times New Roman">Abstract</h1>
-    <h4 font face="Times New Roman" style="line-height: 2em;">
-        First, by constructing a feature fusion module based on multi-channel correlation to fully fuse content feature and speaker feature, 
-      while ensures the linear relationship between the fused feature and content feature. Second, by constructing a decoder with multi-level 
-      speaker information guidance to enhance the similarity of converted speech and reduce the burden of the decoder. Finally, in order to 
-      enhance the generalization ability of the model, the Barlow Twins loss function is introduced to enable the speaker encoder to learn global 
-      and robust speaker feature in an unsupervised manner. The experimental results on the VCTK dataset show that compared with TriAAN-VC, the word 
-      error rate of the model decreases by 53.45%, and the naturalness of converted speech improves by 12.70%. Furthermore, the model achieved 
-      comparable performance on inter-dataset (LibriTTS) as on the intra-dataset (VCTK), indicating that the model has strong generalization ability.
-    </h4>
-    <h2>One-shot VC performance</h2>
-    <h4>
-        Our proposed model uses the same training setup as TriAAN-VC[1], while BetaVAE-VC[2] use open-source pre-trained models.EVQMIVC is our previous work(https://2901733926.github.io/).
-    <h4>
-    <table>
-        <tr>
-            <th></th>
             <th>Source Audio</th>
             <th>Target Audio</th>
             <th>Model</th>
@@ -462,7 +382,10 @@
                 1121_132777_000003_000000.wav
                 <br>
                 his paper was signed in cipher by the seven chiefs of the conspiracy, 
+                <br>
+                <br>
                 Shrewsbury, Devonshire, Danby, Lumley, Compton, Russell and Sidney. Herbert undertook to be their messenger.
+                <br>
             </td>
                <td rowspan="4">
                 <audio controls>
@@ -560,7 +483,6 @@
         <a href="https://arxiv.org/pdf/2210.13771v1">[2] DISENTANGLED SPEECH REPRESENTATION LEARNING FOR
         ONE-SHOT CROSS-LINGUAL VOICE CONVERSION USING β-VAE</a>
     <h2>Pretrained Model</h2>
-    <br>
         <a href="https://github.com/light1726/BetaVAE_VC">BetaVAE-VC pretrained models</a>
 </body>
 </html>
